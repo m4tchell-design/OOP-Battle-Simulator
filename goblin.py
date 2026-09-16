@@ -6,14 +6,16 @@ class Goblin:
 
     def __init__(self, name):
         self.name = name
-        self.health = 100
-        self.attack_power = 15
+        self.health = 75
+        self.attack_power = 25
+        self.armor = 15
 
     def attack(self):
         """Return a random amount of damage."""
         return random.randint(1, self.attack_power)
 
     def take_damage(self, damage):
+        damage =  max(0, damage - self.armor)
         """Reduce health without allowing it to fall below zero."""
         self.health = max(0, self.health - damage)
         print(f"{self.name} takes {damage} damage. Health: {self.health}")
